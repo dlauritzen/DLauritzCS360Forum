@@ -1,0 +1,27 @@
+DLauritz\Forum\ContentBundle\Entity\Forum:
+    type: entity
+    table: forum
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 100
+    oneToMany:
+        posts:
+            targetEntity: Post
+            mappedBy: forum
+        children:
+            targetEntity: Forum
+            mappedBy: forum
+            inversedBy: parent
+    manyToOne:
+        parent:
+            targetEntity: Forum
+            mappedBy: forum
+            joinColumn:
+                name: parent_id
+                referencedColumnName: id

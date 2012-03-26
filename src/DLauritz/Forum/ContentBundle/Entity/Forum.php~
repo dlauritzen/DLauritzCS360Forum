@@ -1,0 +1,74 @@
+<?php
+namespace DLauritz\Forum\ContentBundle\Entity;
+
+class Forum {
+    /**
+     * @var integer $id
+     */
+    private $id;
+
+    /**
+     * @var string $name
+     */
+    private $name;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+    /**
+     * @var DLauritz\Forum\ContentBundle\Entity\Post
+     */
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add posts
+     *
+     * @param DLauritz\Forum\ContentBundle\Entity\Post $posts
+     */
+    public function addPost(\DLauritz\Forum\ContentBundle\Entity\Post $posts)
+    {
+        $this->posts[] = $posts;
+    }
+
+    /**
+     * Get posts
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+}

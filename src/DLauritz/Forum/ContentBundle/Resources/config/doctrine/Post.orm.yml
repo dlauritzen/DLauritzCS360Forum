@@ -1,0 +1,29 @@
+DLauritz\Forum\ContentBundle\Entity\Post:
+    type: entity
+    table: posts
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        content:
+            type: text
+        created:
+            type: DateTime
+        modified:
+            type: DateTime
+    oneToOne:
+        creator:
+            targetEntity: DLauritz\Forum\UserBundle\Entity\User
+            inversedBy: posts
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    manyToOne:
+        forum:
+            targetEntity: Forum
+            mappedBy: posts
+            joinColumn:
+                name: forum_id
+                referencedColumnName: id
