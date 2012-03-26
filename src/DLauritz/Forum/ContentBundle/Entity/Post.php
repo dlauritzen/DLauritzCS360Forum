@@ -8,14 +8,29 @@ class Post {
     private $id;
 
     /**
-     * @var \DateTime $created
+     * @var text $content
+     */
+    private $content;
+
+    /**
+     * @var datetime $created
      */
     private $created;
 
     /**
-     * @var \DateTime $modified
+     * @var datetime $modified
      */
     private $modified;
+
+    /**
+     * @var DLauritz\Forum\UserBundle\Entity\User
+     */
+    private $creator;
+
+    /**
+     * @var DLauritz\Forum\ContentBundle\Entity\Thread
+     */
+    private $thread;
 
 
     /**
@@ -29,11 +44,31 @@ class Post {
     }
 
     /**
+     * Set content
+     *
+     * @param text $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * Get content
+     *
+     * @return text 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
      * Set created
      *
-     * @param \DateTime $created
+     * @param datetime $created
      */
-    public function setCreated(DateTime $created)
+    public function setCreated($created)
     {
         $this->created = $created;
     }
@@ -41,7 +76,7 @@ class Post {
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return datetime 
      */
     public function getCreated()
     {
@@ -51,9 +86,9 @@ class Post {
     /**
      * Set modified
      *
-     * @param \DateTime $modified
+     * @param datetime $modified
      */
-    public function setModified(DateTime $modified)
+    public function setModified($modified)
     {
         $this->modified = $modified;
     }
@@ -61,17 +96,12 @@ class Post {
     /**
      * Get modified
      *
-     * @return \DateTime 
+     * @return datetime 
      */
     public function getModified()
     {
         return $this->modified;
     }
-    /**
-     * @var DLauritz\Forum\UserBundle\Entity\User
-     */
-    private $creator;
-
 
     /**
      * Set creator
@@ -92,54 +122,24 @@ class Post {
     {
         return $this->creator;
     }
-    /**
-     * @var DLauritz\Forum\ContentBundle\Entity\Forum
-     */
-    private $forum;
-
 
     /**
-     * Set forum
+     * Set thread
      *
-     * @param DLauritz\Forum\ContentBundle\Entity\Forum $forum
+     * @param DLauritz\Forum\ContentBundle\Entity\Thread $thread
      */
-    public function setForum(\DLauritz\Forum\ContentBundle\Entity\Forum $forum)
+    public function setThread(\DLauritz\Forum\ContentBundle\Entity\Thread $thread)
     {
-        $this->forum = $forum;
+        $this->thread = $thread;
     }
 
     /**
-     * Get forum
+     * Get thread
      *
-     * @return DLauritz\Forum\ContentBundle\Entity\Forum 
+     * @return DLauritz\Forum\ContentBundle\Entity\Thread 
      */
-    public function getForum()
+    public function getThread()
     {
-        return $this->forum;
-    }
-    /**
-     * @var text $content
-     */
-    private $content;
-
-
-    /**
-     * Set content
-     *
-     * @param text $content
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-    }
-
-    /**
-     * Get content
-     *
-     * @return text 
-     */
-    public function getContent()
-    {
-        return $this->content;
+        return $this->thread;
     }
 }

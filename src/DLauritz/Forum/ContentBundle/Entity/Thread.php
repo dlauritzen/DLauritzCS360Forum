@@ -1,7 +1,14 @@
 <?php
+
 namespace DLauritz\Forum\ContentBundle\Entity;
 
-class Forum {
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DLauritz\Forum\ContentBundle\Entity\Thread
+ */
+class Thread
+{
     /**
      * @var integer $id
      */
@@ -20,17 +27,11 @@ class Forum {
     /**
      * @var DLauritz\Forum\ContentBundle\Entity\Forum
      */
-    private $children;
-
-    /**
-     * @var DLauritz\Forum\ContentBundle\Entity\Forum
-     */
-    private $parent;
+    private $forum;
 
     public function __construct()
     {
         $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
-    $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -84,42 +85,22 @@ class Forum {
     }
 
     /**
-     * Add children
+     * Set forum
      *
-     * @param DLauritz\Forum\ContentBundle\Entity\Forum $children
+     * @param DLauritz\Forum\ContentBundle\Entity\Forum $forum
      */
-    public function addForum(\DLauritz\Forum\ContentBundle\Entity\Forum $children)
+    public function setForum(\DLauritz\Forum\ContentBundle\Entity\Forum $forum)
     {
-        $this->children[] = $children;
+        $this->forum = $forum;
     }
 
     /**
-     * Get children
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    /**
-     * Set parent
-     *
-     * @param DLauritz\Forum\ContentBundle\Entity\Forum $parent
-     */
-    public function setParent(\DLauritz\Forum\ContentBundle\Entity\Forum $parent)
-    {
-        $this->parent = $parent;
-    }
-
-    /**
-     * Get parent
+     * Get forum
      *
      * @return DLauritz\Forum\ContentBundle\Entity\Forum 
      */
-    public function getParent()
+    public function getForum()
     {
-        return $this->parent;
+        return $this->forum;
     }
 }

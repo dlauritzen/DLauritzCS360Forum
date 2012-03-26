@@ -21,9 +21,9 @@ DLauritz\Forum\ContentBundle\Entity\Post:
                 name: user_id
                 referencedColumnName: id
     manyToOne:
-        forum:
-            targetEntity: Forum
+        thread:
+            targetEntity: Thread
             mappedBy: posts
             joinColumn:
-                name: forum_id
+                name: thread_id
                 referencedColumnName: id

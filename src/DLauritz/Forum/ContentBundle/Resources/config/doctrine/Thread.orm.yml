@@ -1,0 +1,24 @@
+DLauritz\Forum\ContentBundle\Entity\Thread:
+    type: entity
+    table: thread
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 100
+    manyToOne:
+        forum:
+            targetEntity: Forum
+            mappedBy: thread
+            joinColumn:
+                name: forum_id
+                referencedColumnName: id
+    oneToMany:
+        posts:
+            targetEntity: Post
+            mappedBy: post
+            inversedBy: thread

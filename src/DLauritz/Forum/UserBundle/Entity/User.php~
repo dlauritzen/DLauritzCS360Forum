@@ -9,7 +9,7 @@ class User implements UserInterface {
 	private $roles;
 
 	public function getSalt() {
-		return "98f0d88e99ha9b309c9d9a4";
+		return "7d185e23d3f71db59795ebea39c5fca6";
 	}
 	
 	public function getUsername() {
