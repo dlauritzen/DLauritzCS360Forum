@@ -71,4 +71,54 @@ class Forum {
     {
         return $this->posts;
     }
+    /**
+     * @var DLauritz\Forum\ContentBundle\Entity\Forum
+     */
+    private $children;
+
+    /**
+     * @var DLauritz\Forum\ContentBundle\Entity\Forum
+     */
+    private $parent;
+
+
+    /**
+     * Add children
+     *
+     * @param DLauritz\Forum\ContentBundle\Entity\Forum $children
+     */
+    public function addForum(\DLauritz\Forum\ContentBundle\Entity\Forum $children)
+    {
+        $this->children[] = $children;
+    }
+
+    /**
+     * Get children
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param DLauritz\Forum\ContentBundle\Entity\Forum $parent
+     */
+    public function setParent(\DLauritz\Forum\ContentBundle\Entity\Forum $parent)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return DLauritz\Forum\ContentBundle\Entity\Forum 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
 }

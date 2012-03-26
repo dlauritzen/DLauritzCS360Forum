@@ -10,9 +10,9 @@ DLauritz\Forum\ContentBundle\Entity\Post:
         content:
             type: text
         created:
-            type: DateTime
+            type: datetime
         modified:
-            type: DateTime
+            type: datetime
     oneToOne:
         creator:
             targetEntity: DLauritz\Forum\UserBundle\Entity\User
