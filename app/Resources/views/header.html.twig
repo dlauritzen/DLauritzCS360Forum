@@ -1,0 +1,14 @@
+<div id="header">
+	<table width="90%" align="center">
+		<tr>
+			<td>
+				{% if is_granted("ROLE_USER") %}
+					{{ app.user.displayName }}
+					(<a href="{{ path('logout') }}">Log Out</a>)
+				{% else %}
+					<a href="{{ path('login') }}">Log In</a>
+				{% endif %}
+			</td>
+		</tr>
+	</table>
+</div>

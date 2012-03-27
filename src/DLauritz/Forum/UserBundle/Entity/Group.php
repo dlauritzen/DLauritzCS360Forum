@@ -104,4 +104,14 @@ class Group implements RoleInterface
     {
         return $this->members;
     }
+
+    /**
+     * Add members
+     *
+     * @param DLauritz\Forum\UserBundle\Entity\User $members
+     */
+    public function addUser(\DLauritz\Forum\UserBundle\Entity\User $members)
+    {
+        $this->members[] = $members;
+    }
 }

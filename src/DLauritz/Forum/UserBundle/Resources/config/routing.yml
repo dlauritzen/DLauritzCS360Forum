@@ -1,3 +1,9 @@
-DLauritzForumUserBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: DLauritzForumUserBundle:Default:index }
+
+user_profile_view:
+    pattern: /user/{username}.{_format}
+    defaults:
+        _controller: DLauritzForumUserBundle:User:profile
+        username: 'self'
+        _format: html
+    requirements:
+        _format: html|json

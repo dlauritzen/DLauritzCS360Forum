@@ -1,6 +1,5 @@
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
         DLauritz\Forum\UserBundle\Entity\User: sha512
 
     providers:

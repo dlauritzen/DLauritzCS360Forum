@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="{% block lang %}en{% endblock %}">
+<head>
+	<meta charset="UTF-8" />
+	<title>
+		{% block title %}Welcome!{% endblock %}
+		{% if app.debug %}
+			- DEV
+		{% endif %}
+	</title>
+	{% block stylesheets %}
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+	{% endblock %}
+	{% block javascripts_header %}
+		<script src="{{ asset('js/jquery-1.7.2.min.js') }}"></script>
+	{% endblock %}
+	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block header %}
+	{% include '::header.html.twig' %}
+{% endblock %}
+{% block flash %}
+	{% if app.session.hasFlash('notice') %}
+    <div class="flash-notice">
+        "{{ app.session.flash('notice') }}"
+    </div>
+	{% endif %}
+{% endblock %}
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>

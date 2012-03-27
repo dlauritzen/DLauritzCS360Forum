@@ -6,6 +6,11 @@ DLauritzForumContentBundle:
     resource: "@DLauritzForumContentBundle/Resources/config/routing.yml"
     prefix:   /
 
+# Update this to point to my actual index page
+_index:
+    pattern:  /
+    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+
 login:
     pattern: /login.{_format}
     defaults:

@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}Log In{% endblock %}
+
 {% block body %}
 
 {% if error %}
@@ -17,7 +19,12 @@
 </form>
 
 {% if app.debug %}
-Hash: {{ hashme }}
+{% if app.session.hasFlash('debug') %}
+    <div class="flash-debug">
+        {{ app.session.flash('debug') }}
+    </div>
+{% endif %}
+{# Hash: {{ hashme }} #}
 {% endif %}
 
 {% endblock %}

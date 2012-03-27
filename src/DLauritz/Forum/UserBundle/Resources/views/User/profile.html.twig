@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}User Profile: {{ user.displayname }}{% endblock %}
+
+{% block body %}
+
+<h1>{{ user.displayname }} ({{ user.username }})</h1>
+
+<p>
+	<i>Member since: {{ user.joined|date('F Y') }}</i>
+</p>
+
+<ul>
+	<li>EMail Address: {{ user.email }}</li>
+</ul>
+
+{% endblock %}
