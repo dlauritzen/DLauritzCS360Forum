@@ -21,7 +21,7 @@ DLauritz\Forum\ContentBundle\Entity\Forum:
     manyToOne:
         parent:
             targetEntity: Forum
-            mappedBy: forum
+            inversedBy: forum
             joinColumn:
                 name: parent_id
                 referencedColumnName: id

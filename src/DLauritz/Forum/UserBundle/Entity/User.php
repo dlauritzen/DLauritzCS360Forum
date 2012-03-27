@@ -6,7 +6,6 @@ class User implements UserInterface {
 
 	private $username;
 	private $password;
-	private $roles;
 
 	public function getSalt() {
 		return "7d185e23d3f71db59795ebea39c5fca6";
@@ -29,7 +28,11 @@ class User implements UserInterface {
 	}
 	
 	public function getRoles() {
-		return $this->roles;
+		$roles = array();
+		foreach ($this->groups as $group) {
+			$roles[] = $group->getRole();
+		}
+		return $roles;
 	}
 
     /**
@@ -145,5 +148,30 @@ class User implements UserInterface {
     public function getPosts()
     {
         return $this->posts;
+    }
+    /**
+     * @var DLauritz\Forum\UserBundle\Entity\Group
+     */
+    private $groups;
+
+
+    /**
+     * Add groups
+     *
+     * @param DLauritz\Forum\UserBundle\Entity\Group $groups
+     */
+    public function addGroup(\DLauritz\Forum\UserBundle\Entity\Group $groups)
+    {
+        $this->groups[] = $groups;
+    }
+
+    /**
+     * Get groups
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 }

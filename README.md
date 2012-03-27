@@ -10,6 +10,11 @@ For a more detailed explanation, see the
 [Installation chapter](http://symfony.com/doc/current/book/installation.html)
 of the Symfony Documentation.
 
+Helpful Links for Developers
+----------------------------
+
+ * [Association Mapping in Doctrine](http://docs.doctrine-project.org/projects/doctrine-orm/en/2.0.x/reference/association-mapping.html)
+
 1) Download the Standard Edition
 --------------------------------
 

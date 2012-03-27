@@ -6,6 +6,20 @@ DLauritzForumContentBundle:
     resource: "@DLauritzForumContentBundle/Resources/config/routing.yml"
     prefix:   /
 
+login:
+    pattern: /login.{_format}
+    defaults:
+        _controller: DLauritzForumUserBundle:User:login
+        _format: html
+    requirements:
+        _format: html|json
+
+login_check:
+    pattern: /login_check
+
+logout:
+    pattern: /logout
+
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

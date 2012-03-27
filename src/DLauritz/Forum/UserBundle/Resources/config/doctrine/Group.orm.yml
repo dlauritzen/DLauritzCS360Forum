@@ -1,0 +1,19 @@
+DLauritz\Forum\UserBundle\Entity\Group:
+    type: entity
+    table: ugroup
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 100
+        role:
+            type: string
+            length: 50
+    manyToMany:
+        members:
+            targetEntity: users
+            mappedBy: groups

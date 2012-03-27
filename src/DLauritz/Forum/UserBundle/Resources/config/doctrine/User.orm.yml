@@ -23,3 +23,24 @@ DLauritz\Forum\UserBundle\Entity\User:
         posts:
             targetEntity: DLauritz\Forum\ContentBundle\Entity\Post
             mappedBy: creator
+    manyToMany:
+        groups:
+            targetEntity: Group
+            inversedBy: members
+            joinTable:
+                name: usergroups
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
+    properties:
+        username:
+            - NotBlank: ~
+            - Regex: "/^[a-z0-9\-_]+$/i"
+        password:
+            - NotBlank: { groups: [registration] }
+            - MinLength: { limit: 6, groups: [registration] }
+        email:
+            - Email: ~

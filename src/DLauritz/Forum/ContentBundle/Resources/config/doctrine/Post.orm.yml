@@ -16,6 +16,7 @@ DLauritz\Forum\ContentBundle\Entity\Post:
     oneToOne:
         creator:
             targetEntity: DLauritz\Forum\UserBundle\Entity\User
+            mappedBy: user_id
             inversedBy: posts
             joinColumn:
                 name: user_id

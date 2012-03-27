@@ -1,5 +1,5 @@
 <?php
-namespace DLauritz\Forum\ContentBundle;
+namespace DLauritz\Forum\ContentBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
