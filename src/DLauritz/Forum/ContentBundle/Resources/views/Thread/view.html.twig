@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ thread.name }}{% endblock %}
+
+{% block body %}
+{% include 'DLauritzForumContentBundle::nav.html.twig' with { 'thread' : thread, 'forum': thread.forum, 'first' : true } %}
+
+<table>
+{% for post in thread.posts %}
+	{% include 'DLauritzForumContentBundle:Post:inthread.html.twig' with { 'post' : post, 'in_thread' : true } %}
+{% else %}
+	<tr>
+		<th>No Posts</th>
+	</tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}

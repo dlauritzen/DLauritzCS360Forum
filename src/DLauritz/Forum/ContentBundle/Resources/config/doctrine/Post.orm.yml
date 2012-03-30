@@ -13,18 +13,17 @@ DLauritz\Forum\ContentBundle\Entity\Post:
             type: datetime
         modified:
             type: datetime
-    oneToOne:
+    manyToOne:
         creator:
             targetEntity: DLauritz\Forum\UserBundle\Entity\User
-            mappedBy: user_id
             inversedBy: posts
             joinColumn:
                 name: user_id
                 referencedColumnName: id
-    manyToOne:
         thread:
             targetEntity: Thread
-            mappedBy: posts
+            mappedBy: thread
+            inversedBy: posts
             joinColumn:
                 name: thread_id
                 referencedColumnName: id

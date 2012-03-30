@@ -1,0 +1,1 @@
+{ [{% for forum in forums %}{% include 'DLauritzForumContentBundle:Forum:view.json.twig' with { 'forum' : forum, 'include_threads' : false } %}, {% endfor %}] }

@@ -1,0 +1,11 @@
+<tr>
+	<table>
+		<tr>
+			<td>{{ post.modified|date('d M Y') }}</td>
+			<td rowspan="2">{{ post.content }}</td>
+		</tr>
+		<tr>
+			<td><a href="{{ path('user_profile_view', {'username':post.creator.username}) }}">{{ post.creator.displayname }}</a></td>
+		</tr>
+	</table>
+</tr>

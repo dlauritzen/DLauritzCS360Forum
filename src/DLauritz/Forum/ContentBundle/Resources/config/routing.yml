@@ -1,3 +1,31 @@
-DLauritzForumContentBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: DLauritzForumContentBundle:Default:index }
+forum_index:
+    pattern: /index.{_format}
+    defaults:
+        _controller: DLauritzForumContentBundle:Forum:index
+        _format: html
+    requirements:
+        _format: html|json
+
+view_forum:
+    pattern: /forum/{id}.{_format}
+    defaults:
+        _controller: DLauritzForumContentBundle:Forum:view
+        _format: html
+    requirements:
+        _format: html|json
+
+view_thread:
+    pattern: /thread/{id}.{_format}
+    defaults:
+        _controller: DLauritzForumContentBundle:Thread:view
+        _format: html
+    requirements:
+        _format: html|json
+
+view_post:
+    pattern: /post/view/{id}.{_format}
+    defaults:
+        _controller: DLauritzForumContentBundle:Post:view
+        _format: html
+    requirements:
+        _format: html|json

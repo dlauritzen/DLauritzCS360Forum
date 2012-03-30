@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Post {{ post.id }}{% endblock %}
+
+{% block body %}
+
+{% block post_id %}{{ post.id }}{% endblock %}
+
+{# Display the content #}
+{% block post_content %}
+	{# beware XSS and the like #}
+	{{ post.content }}
+{% endblock %}
+
+{# Display creator data #}
+{% block post_creator %}
+	Posted by: {{ post.creator.displayname }} on {{ post.created|date('d M Y') }}
+	{# {% include 'DLauritzForumContentBundle:Post:avatar.html.twig' with { 'user': user } %} #}
+{% endblock %}
+
+{% endblock %}

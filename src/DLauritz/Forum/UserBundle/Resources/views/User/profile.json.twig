@@ -1,0 +1,1 @@
+{ id: {{ user.id|json_encode }}, username: {{ user.username|json_encode|raw }}, displayname: {{ user.displayname|json_encode|raw }}, email: {{ user.email|json_encode|raw }}, joindate: {{ user.joined|date('F Y')|json_encode|raw }} }

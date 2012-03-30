@@ -1,1 +1,11 @@
-{{ forum|json_encode }}
+{ "id": {{ forum.id|json_encode }}, 
+  "name": {{ forum.name|json_encode|raw }},
+  "parent": {% if forum.parent %}{{ forum.parent.id }}{% else %}null{% endif %},
+  "children": [{% for child in forum.children %}{{ child.id }}, {% endfor %}],
+{% if include_threads %}
+  "threads": [
+{% for thread in forum.threads %}
+    {% include 'DLauritzForumContentBundle:Thread:view.json.twig' with { 'thread': thread, 'include_posts': false } %}, 
+{% endfor %}
+  ]
+{% endif %} }

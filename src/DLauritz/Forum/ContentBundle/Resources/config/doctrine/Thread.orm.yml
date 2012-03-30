@@ -10,15 +10,16 @@ DLauritz\Forum\ContentBundle\Entity\Thread:
         name:
             type: string
             length: 100
-    manyToOne:
-        forum:
-            targetEntity: Forum
-            mappedBy: thread
-            joinColumn:
-                name: forum_id
-                referencedColumnName: id
     oneToMany:
         posts:
             targetEntity: Post
-            mappedBy: post
-            inversedBy: thread
+            mappedBy: thread
+            inversedBy: post
+    manyToOne:
+        forum:
+            targetEntity: Forum
+            mappedBy: forum
+            inversedBy: threads
+            joinColumn:
+                name: forum_id
+                referencedColumnName: id

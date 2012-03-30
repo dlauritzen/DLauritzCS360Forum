@@ -14,4 +14,18 @@
 	<li>EMail Address: {{ user.email }}</li>
 </ul>
 
+{% if user.posts is not empty %}
+<h2>Posts</h2>
+
+<table>
+{% for post in user.posts %}
+	<tr>
+		<td><a href="{{ path('view_post', {'id': post.id}) }}">{{ post.modified|date('d M Y') }}</a></td>
+		<td><a href="{{ path('view_thread', {'id': post.thread.id}) }}">{{ post.thread.name }}</a></td>
+		<td>{{ post.content|truncate(100) }}</td>
+	</tr>
+{% endfor %}
+</table>
+{% endif %}
+
 {% endblock %}

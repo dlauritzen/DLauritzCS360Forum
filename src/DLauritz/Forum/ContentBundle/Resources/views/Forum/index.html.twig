@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+{% include 'DLauritzForumContentBundle::nav.html.twig' with { 'forum' : null, 'first' : false } %}
+
+<h2>Forums</h2>
+
+<table>
+{% for forum in forums %}
+	<tr>
+		<td>
+			<a href="{{ path('view_forum', 
+						{ 'id' : forum.id } ) 
+					 }}">{{ forum.name }}</a>
+		</td>
+	</tr>
+{% else %}
+	<tr><th>No Forums</th></tr>
+{% endfor %}
+</table>
+
+{% endblock %}

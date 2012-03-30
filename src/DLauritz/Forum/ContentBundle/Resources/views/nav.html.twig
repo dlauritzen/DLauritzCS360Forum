@@ -1,0 +1,21 @@
+<ul class="index_nav">
+
+{% if forum is not null %}
+	<li><a href="{{ path('_index') }}">Index</a></li>
+{% else %}
+	<li>Index</li>
+{% endif %}
+
+{% if forum is not null %}
+{% include 'DLauritzForumContentBundle::navloop.html.twig' with { 'forum' : forum, 'first' : not thread is defined } %}
+{% endif %}
+
+{# Thread #}
+{% if thread is defined %}
+{% if first %}
+	<li>{{ thread.name }}</li>
+{% else %}
+	<li><a href="{{ path('view_thread', {'id' : thread.id }) }}">{{ thread.name }}</a></li>
+{% endif %}
+{% endif %}
+</ul>

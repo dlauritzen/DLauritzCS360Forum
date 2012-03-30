@@ -1,1 +1,12 @@
+.index_nav {
+	list-style: circle;
+	margin: 0px;
+	padding: 0px;
+}
 
+.index_nav li {
+	display: inline;
+	padding: 0px;
+	margin: 0px;
+	padding-right: 10px;
+}

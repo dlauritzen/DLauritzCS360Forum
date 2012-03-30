@@ -1,0 +1,8 @@
+{% if forum.parent is not null %}
+{% include 'DLauritzForumContentBundle::navloop.html.twig' with { 'forum' : forum.parent, 'first' : false } %}
+{% endif %}
+{% if not first %}
+	<li><a href="{{ path('view_forum', { 'id' : forum.id }) }}">{{ forum.name }}</a></li>
+{% else %}
+	<li>{{ forum.name }}</li>
+{% endif %}

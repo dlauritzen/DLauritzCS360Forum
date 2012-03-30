@@ -122,4 +122,29 @@ class Forum {
     {
         return $this->parent;
     }
+    /**
+     * @var DLauritz\Forum\ContentBundle\Entity\Thread
+     */
+    private $threads;
+
+
+    /**
+     * Add threads
+     *
+     * @param DLauritz\Forum\ContentBundle\Entity\Thread $threads
+     */
+    public function addThread(\DLauritz\Forum\ContentBundle\Entity\Thread $threads)
+    {
+        $this->threads[] = $threads;
+    }
+
+    /**
+     * Get threads
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getThreads()
+    {
+        return $this->threads;
+    }
 }

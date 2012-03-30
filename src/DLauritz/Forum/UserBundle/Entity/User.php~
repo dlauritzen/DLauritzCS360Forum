@@ -174,4 +174,29 @@ class User implements UserInterface {
     {
         return $this->groups;
     }
+    /**
+     * @var datetime $joined
+     */
+    private $joined;
+
+
+    /**
+     * Set joined
+     *
+     * @param datetime $joined
+     */
+    public function setJoined($joined)
+    {
+        $this->joined = $joined;
+    }
+
+    /**
+     * Get joined
+     *
+     * @return datetime 
+     */
+    public function getJoined()
+    {
+        return $this->joined;
+    }
 }

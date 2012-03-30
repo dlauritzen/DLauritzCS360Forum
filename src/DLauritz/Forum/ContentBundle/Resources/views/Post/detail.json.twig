@@ -1,0 +1,1 @@
+{ "id": {{ post.id|json_encode }}, "user_id": {{ post.creator.id|json_encode }}, "user_uname": {{ post.creator.username|json_encode|raw }}, "user_dname": {{ post.creator.displayname|json_encode|raw }}, "content": {{ post.content|json_encode|raw }}, "created": {{ post.created|json_encode|raw }}, "modified": {{ post.modified|json_encode|raw }} }

@@ -1,7 +1,36 @@
-{% extends 'DLauritzForumContentBundle::view.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block forum_id %}{{ forum.id }}{% endblock %}
-{% block forum_name %}{{ forum.name }}{% endblock %}
+{% block title %}{{ forum.name }}{% endblock %}
 
-{% block forum_threads %}
+{% block body %}
+
+{% include 'DLauritzForumContentBundle::nav.html.twig' with { 'forum' : forum, 'first' : true } %}
+
+<h2>{{ forum.name }}</h2>
+
+{% if forum.children is not empty %}
+<h3>Children Forums</h3>
+<table>
+{% for child in forum.children %}
+	<tr>
+		<td><a href="{{ path('view_forum', { 'id' : child.id } ) }}">{{ child.name }}</a></td>
+	</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+{% if forum.threads is not empty %}
+<h3>Threads</h3>
+<table>
+	<tr>
+		<th>Thread</th>
+	</tr>
+{% for thread in forum.threads %}
+	<tr>
+		<td><a href="{{ path('view_thread', {'id': thread.id} ) }}">{{ thread.name }}</a></td>
+	</tr>
+{% endfor %}
+</table>
+{% endif %}
+
 {% endblock %}

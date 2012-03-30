@@ -16,6 +16,12 @@ framework:
         default_locale: %locale%
         auto_start:     true
 
+services:
+    foo.twig.extension:
+        class: DLauritz\Forum\ContentBundle\Extension\TruncateExtension
+        tags:
+            -  { name: twig.extension }
+
 # Twig Configuration
 twig:
     debug:            %kernel.debug%

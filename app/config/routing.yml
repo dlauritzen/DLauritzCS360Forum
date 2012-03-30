@@ -9,7 +9,9 @@ DLauritzForumContentBundle:
 # Update this to point to my actual index page
 _index:
     pattern:  /
-    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+    defaults:
+        _controller: DLauritzForumContentBundle:Forum:index
+        _format: html
 
 login:
     pattern: /login.{_format}
