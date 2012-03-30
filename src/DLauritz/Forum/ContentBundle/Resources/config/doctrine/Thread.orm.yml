@@ -15,6 +15,9 @@ DLauritz\Forum\ContentBundle\Entity\Thread:
             targetEntity: Post
             mappedBy: thread
             inversedBy: post
+        permissions:
+            targetEntity: Permissions
+            mappedBy: thread
     manyToOne:
         forum:
             targetEntity: Forum

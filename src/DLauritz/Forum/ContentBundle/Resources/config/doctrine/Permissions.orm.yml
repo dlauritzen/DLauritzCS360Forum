@@ -1,0 +1,34 @@
+DLauritz\Forum\ContentBundle\Entity\Permissions:
+    type: entity
+    table: permissions
+    manyToOne:
+        forum:
+            targetEntity: Forum
+            inversedBy: permissions
+            joinColumn:
+                name: forum_id
+                referencedColumnName: id
+        thread:
+            targetEntity: Thread
+            inversedBy: permissions
+            joinColumn:
+                name: thread_id
+                referencedColumnName: id
+        group:
+            targetEntity: DLauritz\Forum\UserBundle\Entity\Group
+#            inversedBy: permissions
+            joinColumn:
+                name: group_id
+                referencedColumnName: id
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        view:
+            type: boolean
+        edit:
+            type: boolean
+        moderate:
+            type: boolean

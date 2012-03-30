@@ -14,8 +14,15 @@
 	<li>EMail Address: {{ user.email }}</li>
 </ul>
 
+<h2>Groups</h2>
+<ul>
+{% for group in user.groups %}
+	<li>{{ group.name }}</li>
+{% endfor %}
+</ul>
+
 {% if user.posts is not empty %}
-<h2>Posts</h2>
+<h2>Recent Posts</h2>
 
 <table>
 {% for post in user.posts %}

@@ -2,7 +2,7 @@
 namespace DLauritz\Forum\UserBundle\Entity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements UserInterface {
+class User implements UserInterface, \Serializable {
 
 	private $username;
 	private $password;
@@ -34,8 +34,19 @@ class User implements UserInterface {
 		}
 		return $roles;
 	}
+	
+	public function hasRole($role) {
+		$roles = $this->getRoles();
+		foreach ($roles as $r) {
+			if ($role == $r) {
+				return true;
+			}
+		}
+		return false;
+	}
 
     /**
+	 * @Id
      * @var integer $id
      */
     private $id;
@@ -199,4 +210,29 @@ class User implements UserInterface {
     {
         return $this->joined;
     }
+	
+	public function serialize() {
+		return serialize(array(
+			"id" => $this->id,
+			"username" => $this->username,
+			"password" => $this->password,
+			"display_name" => $this->display_name,
+			"email" => $this->email,
+			"joined" => $this->joined,
+			"groups" => $this->groups,
+			"posts" => $this->posts
+		));
+	}
+	
+	public function unserialize($serialized) {
+		$data = unserialize($serialized);
+		$this->id = $data['id'];
+		$this->username = $data['username'];
+		$this->display_name = $data['display_name'];
+		$this->email = $data['email'];
+		$this->joined = $data['joined'];
+		$this->groups = $data['groups'];
+		$this->posts = $data['posts'];
+	}
+	
 }

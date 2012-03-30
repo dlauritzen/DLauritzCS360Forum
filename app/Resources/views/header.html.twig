@@ -9,6 +9,11 @@
 					<a href="{{ path('login') }}">Log In</a>
 				{% endif %}
 			</td>
+{% if app.user|loggedIn %}
+			<td>
+				<a href="{{ path('user_profile_view', { 'username' : app.user.username }) }}">Profile</a>
+			</td>
+{% endif %}
 		</tr>
 	</table>
 </div>

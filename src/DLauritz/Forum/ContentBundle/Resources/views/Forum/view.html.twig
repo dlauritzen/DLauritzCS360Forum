@@ -33,4 +33,16 @@
 </table>
 {% endif %}
 
+{% if forum.permissions is not empty %}
+<h3>Permissions</h3>
+<ul>
+{% for p in forum.permissions %}
+	<li>{{ p.group.name }} can 
+		{% if p.view %}view{% endif %}
+		{% if p.edit %}/ edit{% endif %}
+		{% if p.moderate %}/ moderate{% endif %}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
 {% endblock %}

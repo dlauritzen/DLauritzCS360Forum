@@ -107,7 +107,8 @@ class ContextListener implements ListenerInterface
         if (null !== $this->logger) {
             $this->logger->debug('Write SecurityContext in the session');
         }
-
+		
+		$this->logger->debug(serialize($token));
         $event->getRequest()->getSession()->set('_security_'.$this->contextKey, serialize($token));
     }
 

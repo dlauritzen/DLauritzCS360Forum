@@ -4,8 +4,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface {
 
-	private $username;
-	private $password;
+	protected $username;
+	protected $password;
 
 	public function getSalt() {
 		return "7d185e23d3f71db59795ebea39c5fca6";
@@ -34,21 +34,32 @@ class User implements UserInterface {
 		}
 		return $roles;
 	}
+	
+	public function hasRole($role) {
+		$roles = $this->getRoles();
+		foreach ($roles as $r) {
+			if ($role == $r) {
+				return true;
+			}
+		}
+		return false;
+	}
 
     /**
+	 * @Id
      * @var integer $id
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string $display_name
      */
-    private $display_name;
+    protected $display_name;
 
     /**
      * @var string $email
      */
-    private $email;
+    protected $email;
 
 
     /**
@@ -123,7 +134,7 @@ class User implements UserInterface {
     /**
      * @var DLauritz\Forum\ContentBundle\Entity\Post
      */
-    private $posts;
+    protected $posts;
 
     public function __construct()
     {
@@ -152,7 +163,7 @@ class User implements UserInterface {
     /**
      * @var DLauritz\Forum\UserBundle\Entity\Group
      */
-    private $groups;
+    protected $groups;
 
 
     /**
@@ -177,7 +188,7 @@ class User implements UserInterface {
     /**
      * @var datetime $joined
      */
-    private $joined;
+    protected $joined;
 
 
     /**

@@ -2,13 +2,14 @@
 
 OSYS = $(shell uname)
 
-ifeq ($(OSYS), 'Darwin')
+ifeq ($(OSYS),"Darwin")
 	PHP = php
 else
 	PHP = php-5.3
 endif
 
 help:
+	@echo "OSys is $(OSYS) so PHP is $(PHP)"
 	@echo "make resetcache -- reset the production cache to reflect changes"
 	@echo "make entities   -- Update the Doctrine entities"
 	@echo "make schema     -- Update the database"

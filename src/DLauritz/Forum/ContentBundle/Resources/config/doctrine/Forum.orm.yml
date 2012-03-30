@@ -17,6 +17,9 @@ DLauritz\Forum\ContentBundle\Entity\Forum:
         children:
             targetEntity: Forum
             mappedBy: parent
+        permissions:
+            targetEntity: Permissions
+            mappedBy: forum
     manyToOne:
         parent:
             targetEntity: Forum

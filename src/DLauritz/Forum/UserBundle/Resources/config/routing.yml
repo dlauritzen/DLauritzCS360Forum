@@ -7,3 +7,11 @@ user_profile_view:
         _format: html
     requirements:
         _format: html|json
+
+group_view:
+    pattern: /group/{id}.{_format}
+    defaults:
+        _controller: DLauritzForumUserBundle:Group:view
+        _format: html
+    requirements:
+        _format: html|json

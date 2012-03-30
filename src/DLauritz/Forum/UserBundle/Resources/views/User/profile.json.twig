@@ -1,1 +1,6 @@
-{ id: {{ user.id|json_encode }}, username: {{ user.username|json_encode|raw }}, displayname: {{ user.displayname|json_encode|raw }}, email: {{ user.email|json_encode|raw }}, joindate: {{ user.joined|date('F Y')|json_encode|raw }} }
+{ "id": {{ user.id|json_encode }}, 
+"username": {{ user.username|json_encode|raw }}, 
+"displayname": {{ user.displayname|json_encode|raw }}, 
+"email": {{ user.email|json_encode|raw }}, 
+"groups": [{% for group in user.groups %}{% include 'DLauritzForumUserBundle:Group:view.json.twig' with { 'group' : group } %}{% if not loop.last %},{% endif %}{% endfor %}],
+"joindate": {{ user.joined|json_encode|raw }} }

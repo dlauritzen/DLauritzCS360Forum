@@ -10,29 +10,51 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Group implements RoleInterface
 {
+    protected $role;
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
     /**
      * @var integer $id
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string $name
      */
-    private $name;
+    protected $name;
 
     /**
-     * @var string $role
+     * @var DLauritz\Forum\ContentBundle\Entity\Permissions
      */
-    private $role;
+    protected $permissions;
 
     /**
-     * @var DLauritz\Forum\UserBundle\Entity\users
+     * @var DLauritz\Forum\UserBundle\Entity\User
      */
-    private $members;
+    protected $members;
 
     public function __construct()
     {
-        $this->members = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->permissions = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->members = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -66,31 +88,31 @@ class Group implements RoleInterface
     }
 
     /**
-     * Set role
+     * Add permissions
      *
-     * @param string $role
+     * @param DLauritz\Forum\ContentBundle\Entity\Permissions $permissions
      */
-    public function setRole($role)
+    public function addPermissions(\DLauritz\Forum\ContentBundle\Entity\Permissions $permissions)
     {
-        $this->role = $role;
+        $this->permissions[] = $permissions;
     }
 
     /**
-     * Get role
+     * Get permissions
      *
-     * @return string 
+     * @return Doctrine\Common\Collections\Collection 
      */
-    public function getRole()
+    public function getPermissions()
     {
-        return $this->role;
+        return $this->permissions;
     }
 
     /**
      * Add members
      *
-     * @param DLauritz\Forum\UserBundle\Entity\users $members
+     * @param DLauritz\Forum\UserBundle\Entity\User $members
      */
-    public function addusers(\DLauritz\Forum\UserBundle\Entity\users $members)
+    public function addUser(\DLauritz\Forum\UserBundle\Entity\User $members)
     {
         $this->members[] = $members;
     }
@@ -104,14 +126,30 @@ class Group implements RoleInterface
     {
         return $this->members;
     }
+    /**
+     * @var string $description
+     */
+    protected $description;
+
 
     /**
-     * Add members
+     * Set description
      *
-     * @param DLauritz\Forum\UserBundle\Entity\User $members
+     * @param string $description
      */
-    public function addUser(\DLauritz\Forum\UserBundle\Entity\User $members)
+    public function setDescription($description)
     {
-        $this->members[] = $members;
+        $this->description = $description;
     }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+	
 }

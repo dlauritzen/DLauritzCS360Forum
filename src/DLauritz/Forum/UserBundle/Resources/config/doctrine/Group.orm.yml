@@ -10,10 +10,18 @@ DLauritz\Forum\UserBundle\Entity\Group:
         name:
             type: string
             length: 100
+        description:
+            type: string
+            length: 200
         role:
             type: string
+            unique: true
             length: 50
-    manyToMany:
-        members:
-            targetEntity: User
-            mappedBy: groups
+#    manyToMany:
+#        members:
+#            targetEntity: User
+#            mappedBy: groups
+    oneToMany:
+        permissions:
+            targetEntity: DLauritz\Forum\ContentBundle\Entity\Permissions
+            mappedBy: group

@@ -103,4 +103,29 @@ class Thread
     {
         return $this->forum;
     }
+    /**
+     * @var DLauritz\Forum\ContentBundle\Entity\Permissions
+     */
+    private $permissions;
+
+
+    /**
+     * Add permissions
+     *
+     * @param DLauritz\Forum\ContentBundle\Entity\Permissions $permissions
+     */
+    public function addPermissions(\DLauritz\Forum\ContentBundle\Entity\Permissions $permissions)
+    {
+        $this->permissions[] = $permissions;
+    }
+
+    /**
+     * Get permissions
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPermissions()
+    {
+        return $this->permissions;
+    }
 }

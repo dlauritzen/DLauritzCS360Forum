@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h2>{{ group.name }}</h2>
+
+<p>{{ group.description }}</p>
+
+{% if group.members is not empty %}
+<h3>Members</h3>
+<table>
+{% for member in group.members %}
+	<tr>
+		<td><a href="{{ path('user_profile_view', { 'username' : member.username }) }}">{{ member.displayname }}</a></td>
+	</tr>
+{% endfor %}
+</table>
+{% else %}
+<p><i>No members</i></p>
+{% endif %}
+
+{% if group.permissions is not empty %}
+<h3>Specialized Permissions</h3>
+<table>
+	<tr>
+		<th>Type</th>
+		<th>Name</th>
+		<th><img src="{{ asset('images/magnifying_glass.png') }}" height="16" title="View" alt="View" /></th>
+		<th><img src="{{ asset('images/edit.png') }}" height="16" title="Edit" alt="Edit" /></th>
+		<th><img src="{{ asset('images/scott_kirkwood_scales.png') }}" height="16" title="Moderate" alt="Moderate" /></th>
+	</tr>
+{% for p in group.permissions %}
+	<tr>
+		<td>{% if p.forum is not null %}Forum{% else %}Thread{% endif %}</td>
+		<td>
+			{% if p.forum is not null %}
+			<a href="{{ path('view_forum', { 'id' : p.forum.id }) }}">{{ p.forum.name }}</a>
+			{% else %}
+			<a href="{{ path('view_thread', { 'id' : p.thread.id }) }}">{{ p.thread.name }}</a>
+			{% endif %}
+		</td>
+		<td align="center">{% if p.view %}<img src="{{ asset('images/check.png') }}" height="16" alt="Yes" />{% endif %}</td>
+		<td align="center">{% if p.edit %}<img src="{{ asset('images/check.png') }}" height="16" alt="Yes" />{% endif %}</td>
+		<td align="center">{% if p.moderate %}<img src="{{ asset('images/check.png') }}" height="16" alt="Yes" />{% endif %}</td>
+	</tr>
+{% endfor %}
+</table>
+{% else %}
+<p><i>No specified permissions</i></p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{ "id": {{ group.id|json_encode|raw }},
+"name": {{ group.name|json_encode|raw }},
+"description": {{ group.description|json_encode|raw }},
+"role": {{ group.role|json_encode|raw }}{% if include_members %},
+"members": [{% for user in group.members %}{{ user.id|json_encode|raw }}{% if not loop.last %}, {% endif %}
+{% endfor %}]
+{% endif %}
+}

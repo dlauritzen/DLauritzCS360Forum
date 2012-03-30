@@ -1,5 +1,5 @@
 { "id": {{ thread.id|json_encode }}, 
   "name": {{ thread.name|json_encode|raw }},
   "forum": {{ thread.forum.id|json_encode }},
-  "posts": {% if include_posts %}[{% for post in thread.posts %}{% include 'DLauritzForumContentBundle:Post:detail.json.twig' with { 'post' : post } %}{% endfor %}]{% else %}null{% endif %}
+  "posts": {% if include_posts %}[{% for post in thread.posts %}{% include 'DLauritzForumContentBundle:Post:detail.json.twig' with { 'post' : post } %}{% if not loop.last %}, {% endif %}{% endfor %}]{% else %}null{% endif %}
 }

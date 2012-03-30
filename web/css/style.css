@@ -10,3 +10,11 @@
 	margin: 0px;
 	padding-right: 10px;
 }
+
+.icon {
+	height: 16px;
+	vertical-align: baseline;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}

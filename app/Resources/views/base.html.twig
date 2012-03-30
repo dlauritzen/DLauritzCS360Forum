@@ -28,6 +28,12 @@
 	{% endif %}
 {% endblock %}
 {% block body %}{% endblock %}
+{% include '::footer.html.twig' %}
 {% block javascripts %}{% endblock %}
+
+{# Do some debugging #}
+{% if app.debug %}
+	Debuggy!
+{% endif %}
 </body>
 </html>
