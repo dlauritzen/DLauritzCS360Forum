@@ -3,16 +3,21 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>
-		{% block title %}Welcome!{% endblock %}
+		{% block title %}(Insert Title Here){% endblock %}
 		{% if app.debug %}
 			- DEV
 		{% endif %}
 	</title>
 	{% block stylesheets %}
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-ui.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/1140grid/1140.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/1140grid/styles.css') }}" />
 	{% endblock %}
 	{% block javascripts_header %}
 		<script src="{{ asset('js/jquery-1.7.2.min.js') }}"></script>
+		<script src="{{ asset('js/jquery-ui-1.8.18.custom.min.js') }}"></script>
+		<script src="{{ asset('js/css3-mediaqueries.js') }}"></script>
 	{% endblock %}
 	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -22,7 +27,7 @@
 {% endblock %}
 {% block flash %}
 	{% if app.session.hasFlash('notice') %}
-    <div class="flash-notice">
+    <div class="flash-notice container">
         "{{ app.session.flash('notice') }}"
     </div>
 	{% endif %}
@@ -33,7 +38,11 @@
 
 {# Do some debugging #}
 {% if app.debug %}
-	Debuggy!
+<div class="container">
+	<div class="row">
+		<div class="twelvecol last"><hr /><h4>Debug</h4></div>
+	</div>
+</div>
 {% endif %}
 </body>
 </html>

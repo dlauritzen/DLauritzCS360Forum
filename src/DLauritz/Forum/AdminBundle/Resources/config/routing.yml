@@ -1,0 +1,14 @@
+admin_dashboard:
+  pattern: /admin
+  defaults:
+    _controller: DLauritzForumAdminBundle:Admin:dashboard
+
+admin_users_view:
+  pattern: /admin/users
+  defaults:
+    _controller: DLauritzForumAdminBundle:Admin:viewUsers
+
+admin_user_detail:
+  pattern: /admin/user/{username}
+  defaults:
+    _controller: DLauritzForumAdminBundle:Admin:viewUserDetail

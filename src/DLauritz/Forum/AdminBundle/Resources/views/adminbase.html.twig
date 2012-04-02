@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{% block page_title %}{% endblock %} - Admin Panel{% endblock %}
+
+{% block body %}
+
+{# Here goes the actual page content #}
+<div class="container">
+	<div class="row">
+		<div class="threecol">
+			<h3>Navigation</h3>
+		</div>
+		<div class="ninecol last">
+{% block content %}
+{% endblock %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

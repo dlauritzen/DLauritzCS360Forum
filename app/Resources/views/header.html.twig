@@ -1,19 +1,17 @@
-<div id="header">
-	<table width="90%" align="center">
-		<tr>
-			<td>
-				{% if is_granted("ROLE_USER") %}
-					{{ app.user.displayName }}
-					(<a href="{{ path('logout') }}">Log Out</a>)
-				{% else %}
-					<a href="{{ path('login') }}">Log In</a>
-				{% endif %}
-			</td>
+<div id="header" class="container">
+	<div class="row">
+		<div class="tencol">
+			{% if is_granted("ROLE_USER") %}
+				{{ app.user.displayName }}
+				(<a href="{{ path('logout') }}">Log Out</a>)
+			{% else %}
+				<a href="{{ path('login') }}">Log In</a>
+			{% endif %}
+		</div>
 {% if app.user|loggedIn %}
-			<td>
-				<a href="{{ path('user_profile_view', { 'username' : app.user.username }) }}">Profile</a>
-			</td>
+		<div class="twocol last">
+			<a href="{{ path('user_profile_view', { 'username' : app.user.username }) }}">Profile</a>
+		</div>
 {% endif %}
-		</tr>
-	</table>
+	</div>
 </div>

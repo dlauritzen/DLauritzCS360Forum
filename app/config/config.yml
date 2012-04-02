@@ -25,6 +25,10 @@ services:
         class: DLauritz\Forum\ContentBundle\Extension\PermissionExtension
         tags:
             - { name: twig.extension }
+    utils.twig.extension:
+        class: DLauritz\Forum\ContentBundle\Extension\UtilsExtension
+        tags:
+            - { name: twig.extension }
 
 # Twig Configuration
 twig:

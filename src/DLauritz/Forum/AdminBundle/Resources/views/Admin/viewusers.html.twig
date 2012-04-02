@@ -1,0 +1,42 @@
+{% extends 'DLauritzForumAdminBundle::adminbase.html.twig' %}
+
+{% block page_title %}Users{% endblock %}
+
+{% block content %}
+<h1>Users</h1>
+
+<h3>Statistics</h3>
+<ul>
+	<li>Registered Users: {{ users|count }}</li>
+</ul>
+
+<h3>Registered Members</h3>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Username</th>
+		<th>Display Name</th>
+		<th>EMail</th>
+		<th>Groups</th>
+		<th>Posts</th>
+	</tr>
+{% for user in users %}
+	<tr>
+		<td>{{ user.id }}</td>
+		<td><a href="{{ path('admin_user_detail', { 'username' : user.username }) }}">{{ user.username }}</a></td>
+		<td>{{ user.displayname }}</td>
+		<td>{{ user.email }}</td>
+		<td>
+{% for group in user.groups %}
+	{{ group.name }}{% if not loop.last %}, {% endif %}
+	{% if loop.index % 2 == 0 %}
+	<br />
+	{% endif %}
+{% endfor %}
+		</td>
+		<td>{{ user.posts|count }}</td>
+	</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

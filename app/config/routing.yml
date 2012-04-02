@@ -1,3 +1,7 @@
+DLauritzForumAdminBundle:
+    resource: "@DLauritzForumAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 DLauritzForumUserBundle:
     resource: "@DLauritzForumUserBundle/Resources/config/routing.yml"
     prefix:   /

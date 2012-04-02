@@ -4,20 +4,25 @@
 
 {% include 'DLauritzForumContentBundle::nav.html.twig' with { 'forum' : null, 'first' : false } %}
 
-<h2>Forums</h2>
+<div class="container">
 
-<table>
+	<div class="row">
+		<div class="twelvecol last"><h2>Forums</h2></div>
+	</div>
+
 {% for forum in forums %}
-	<tr>
-		<td>
+	<div class="row">
+		<div class="twelvecol last">
 			<a href="{{ path('view_forum', 
 						{ 'id' : forum.id } ) 
 					 }}">{{ forum.name }}</a>
-		</td>
-	</tr>
+		</div>
+	</div>
 {% else %}
-	<tr><th>No Forums</th></tr>
+	<div class="row">
+		<div class="twelvecol last">No Forums</div>
+	</div>
 {% endfor %}
-</table>
+</div>
 
 {% endblock %}
